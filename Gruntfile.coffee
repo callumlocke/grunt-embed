@@ -19,7 +19,6 @@ module.exports = (grunt) ->
 
     embed:
       default_options:
-        # options: {}
         files:
           'tmp/default.html': 'test/fixtures/input.html'
 

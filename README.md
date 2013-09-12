@@ -1,4 +1,4 @@
-# grunt-embed
+# grunt-embed [![Build Status](https://secure.travis-ci.org/callumlocke/grunt-embed.png?branch=master)](http://travis-ci.org/callumlocke/grunt-embed)
 
 This is the [resource-embedder](https://github.com/callumlocke/resource-embedder) module wrapped as a Grunt plugin.
 
