@@ -1,6 +1,8 @@
 # grunt-embed [![Build Status](https://secure.travis-ci.org/callumlocke/grunt-embed.png?branch=master)](http://travis-ci.org/callumlocke/grunt-embed)
 
-> Grunt plugin version of the [resource-embedder](https://github.com/callumlocke/resource-embedder) module.
+> Not ready for production use yet! (See [issues](https://github.com/callumlocke/resource-embedder/issues).) Wait till 0.1.x.
+
+Grunt plugin version of the [resource-embedder](https://github.com/callumlocke/resource-embedder) module.
 
 Turns short external scripts and stylesheets into embedded ones:
 
