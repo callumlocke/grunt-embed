@@ -11,8 +11,6 @@ path = require 'path'
 
 module.exports = (grunt) ->
 
-  # Please see the Grunt documentation for more information regarding task
-  # creation: http://gruntjs.com/creating-tasks
   grunt.registerMultiTask "embed", "Converts external scripts and stylesheets into embedded ones.", ->
     done = @async()
 
@@ -28,7 +26,9 @@ module.exports = (grunt) ->
 
       else
         embedder = new ResourceEmbedder srcFile, @options()
-        embedder.get (output) ->
+        embedder.get (output, warnings) ->
           grunt.file.write file.dest, output
-          grunt.log.writeln "File \"#{file.dest}\" created."
+          if warnings?
+            grunt.log.warn warning for warning in warnings
+          grunt.log.ok "File \"#{file.dest}\" created."
           done()
