@@ -1,15 +1,19 @@
 # grunt-embed [![Build Status](https://secure.travis-ci.org/callumlocke/grunt-embed.png?branch=master)](http://travis-ci.org/callumlocke/grunt-embed)
 
-> Not ready for production use yet! (See [issues](https://github.com/callumlocke/resource-embedder/issues).) Wait till 0.1.x.
-
-Grunt plugin version of the [resource-embedder](https://github.com/callumlocke/resource-embedder) module.
+> This is a Grunt plugin wrapper around [resource-embedder](https://github.com/callumlocke/resource-embedder).
 
 Turns short external scripts and stylesheets into embedded ones:
 
 * `<script src="foo.js"></script>` becomes `<script> ... </script>`
 * `<link rel="stylesheet" href="bar.css">` becomes `<style> ... </style>`
 
-This is for the purpose of reducing the number of HTTP requests, at the expense of increased markup size and reduced cacheability. Do your own testing to see if this is a good trade-off in your situation. (Short, blocking scripts in the `head` are a good candidate for embedding.)
+The default behaviour is to embed anything under 5KB in size, but this threshold is configurable.
+
+**Should you embed your scripts?** Depends. Embedding reduces the number of HTTP requests, and can reduce blocking of subsequent requests and page rendering, but it also means the resources can't be cached individually and shared between pages.
+
+You should do your own measurements to work out if this is a good trade-off in your situation. But, as a guide: short, blocking scripts in the head are often a good candidate for embedding.
+
+A small Modernizr build is a good example: if it's embedded (as a script before your main stylesheet), it will have been executed and applied any special CSS classes to the `<html>` tag before your styles are received. Then as soon as the styles are received, any subsequent background-image downloads can be started immediately, because Modernizr's classes will already have been added to the `<html>` tag.
 
 
 ## Getting Started
@@ -50,9 +54,7 @@ grunt.initConfig({
 
 ### Options
 
-See [resource-embedder options](https://github.com/callumlocke/resource-embedder#options) for the full list.
-
-You can also use `data-embed` attributes in your markup to force-include/exclude a particular `script` or `link` element from being embedded, as documented [here](https://github.com/callumlocke/resource-embedder#choosing-which-files-to-embed).
+See full list at https://github.com/callumlocke/resource-embedder#options
 
 ### Usage Examples
 
@@ -85,6 +87,16 @@ grunt.initConfig({
     }
   }
 })
+```
+
+#### Overriding the options for a given script/stylesheet
+
+You can use `data-embed` attributes to override the options for an individual resource.
+
+```html
+<script src="foo.js" data-embed></script> <!-- always embed -->
+<script src="foo.js" data-embed="false"></script> <!-- never embed -->
+<script src="foo.js" data-embed="10KB"></script> <!-- embed if under 10KB -->
 ```
 
 
