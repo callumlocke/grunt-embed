@@ -54,7 +54,7 @@ grunt.initConfig({
 
 ### Options
 
-See full list at https://github.com/callumlocke/resource-embedder#options
+Any options will be passed through to `resource-embedder` – see [full list of options](https://github.com/callumlocke/resource-embedder#options).
 
 ### Usage Examples
 

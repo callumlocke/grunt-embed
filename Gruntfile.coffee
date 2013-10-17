@@ -7,7 +7,7 @@
 ###
 
 module.exports = (grunt) ->
-  
+
   # Project configuration.
   grunt.initConfig
 
@@ -44,6 +44,6 @@ module.exports = (grunt) ->
     'grunt-contrib-nodeunit'
     'grunt-contrib-watch'
   ]
-  
+
   grunt.registerTask 'test', ['clean', 'embed', 'nodeunit']
   grunt.registerTask 'default', ['watch']
