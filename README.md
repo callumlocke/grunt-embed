@@ -65,8 +65,10 @@ Embed any external scripts and stylesheets under 5KB in size (the default thresh
 ```js
 grunt.initConfig({
   embed: {
-    files: {
-      'dest/output.html': 'src/input.html'
+    some_target: {
+      files: {
+        'dest/output.html': 'src/input.html'
+      }
     }
   }
 })
@@ -82,8 +84,10 @@ grunt.initConfig({
     options: {
       threshold: '3KB'
     },
-    files: {
-      'dest/output.html': 'src/input.html'
+    some_target: {
+      files: {
+        'dest/output.html': 'src/input.html'
+      }
     }
   }
 })
