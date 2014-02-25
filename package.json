@@ -1,6 +1,6 @@
 {
   "name": "grunt-embed",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "Grunt plugin to convert external scripts and stylesheets into embedded ones.",
   "homepage": "https://github.com/callumlocke/grunt-embed",
   "bugs": "https://github.com/callumlocke/grunt-embed/issues",
