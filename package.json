@@ -22,7 +22,7 @@
     }
   ],
   "dependencies": {
-    "resource-embedder": "~0.1.2"
+    "resource-embedder": "~0.2.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
