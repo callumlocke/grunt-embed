@@ -15,7 +15,7 @@ module.exports = (grunt) ->
     done = @async()
 
     @files.forEach (file) =>
-      srcFile = file.orig.src
+      srcFile = file.src
       if typeof srcFile isnt 'string'
         if srcFile.length > 1
           grunt.log.warn 'Multiple source files supplied; only the first will be used.'
