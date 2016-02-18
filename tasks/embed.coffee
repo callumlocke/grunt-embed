@@ -13,6 +13,7 @@ module.exports = (grunt) ->
 
   grunt.registerMultiTask 'embed', 'Converts external scripts and stylesheets into embedded ones.', ->
     done = @async()
+    jobsRunning = 0
 
     @files.forEach (file) =>
       srcFile = file.src
@@ -25,10 +26,13 @@ module.exports = (grunt) ->
         grunt.log.warn "Source file \"#{path.resolve(srcFile)}\" not found."
 
       else
+        jobsRunning++;
         embedder = new ResourceEmbedder srcFile, @options()
         embedder.get (output, warnings) ->
           grunt.file.write file.dest, output
           if warnings?
             grunt.log.warn warning for warning in warnings
           grunt.log.ok "File \"#{file.dest}\" created."
-          done()
+          jobsRunning--;
+          if !jobsRunning
+            done()
