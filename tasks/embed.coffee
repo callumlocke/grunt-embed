@@ -12,7 +12,9 @@ path = require 'path'
 module.exports = (grunt) ->
 
   grunt.registerMultiTask 'embed', 'Converts external scripts and stylesheets into embedded ones.', ->
-    done = @async()
+    complete = @async()
+    jobs = @files.length
+    done = () -> complete() if not jobs -= 1
 
     @files.forEach (file) =>
       srcFile = file.orig.src
